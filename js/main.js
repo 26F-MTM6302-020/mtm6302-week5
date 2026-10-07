@@ -33,18 +33,35 @@ const $groceryUl = document.getElementById("grocery-list")
 }) */
 
 // highlight multiple lines use Shift + option + A to comment
+function updateList() {
+    // create an empty array
+    let $listItems = []
 
-// create an empty array
-let $listItems = []
+    $groceryUl.innerHTML = ''
 
-// using forEach to loop over $groceryList
-$groceryList.forEach(item => {
-    // pushing html with the item variable to the $listItems array
-    $listItems.push(`<li>${item}</li>`)
-})
+    // using forEach to loop over $groceryList
+    $groceryList.forEach(item => {
+        // pushing html with the item variable to the $listItems array
+        $listItems.push(`<li>${item}</li>`)
+    })
 
-// add list items as a package to the grocerylist using insertAdjacentHTML
-// $listItems.join('') joins all the items of the list $listItems into one
-$groceryUl.insertAdjacentHTML('afterbegin', $listItems.join(''))
+    // add list items as a package to the grocerylist using insertAdjacentHTML
+    // $listItems.join('') joins all the items of the list $listItems into one
+    $groceryUl.insertAdjacentHTML('afterbegin', $listItems.join(''))
+}
+
+updateList()
 
 // Create an addItem(item) funciton to add a new item to the array and update the page
+function addItem(item) {
+    if (item !== '') {
+        $groceryList.push(item)
+        updateList()
+    } else {
+        console.log("Please supply an item to add")
+    }
+}
+
+function removeItem(item) {
+    // filter through the array and print it on the page
+}
